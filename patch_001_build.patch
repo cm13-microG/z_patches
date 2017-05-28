@@ -1,0 +1,15 @@
+diff --git a/tools/buildinfo.sh b/tools/buildinfo.sh
+index fa717b7..b09b93b 100755
+--- a/tools/buildinfo.sh
++++ b/tools/buildinfo.sh
+@@ -16,8 +16,8 @@ echo "ro.build.version.base_os=$PLATFORM_BASE_OS"
+ echo "ro.build.date=`date`"
+ echo "ro.build.date.utc=`date +%s`"
+ echo "ro.build.type=$TARGET_BUILD_TYPE"
+-echo "ro.build.user=$USER"
+-echo "ro.build.host=`hostname`"
++echo "ro.build.user=$KBUILD_BUILD_USER"
++echo "ro.build.host=$KBUILD_BUILD_HOST"
+ echo "ro.build.tags=$BUILD_VERSION_TAGS"
+ echo "ro.build.flavor=$TARGET_BUILD_FLAVOR"
+ echo "ro.product.brand=$PRODUCT_BRAND"

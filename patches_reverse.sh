@@ -19,7 +19,6 @@ TOPDIR=$PWD
 
 clear_set build
 clear_set kernel/motorola/msm8916
-clear_set vendor/motorola
 clear_set frameworks/base
 
 cd $THISDIR

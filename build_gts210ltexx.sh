@@ -5,6 +5,8 @@
 # and feel free to adapt to your own needs
 # ------------------------------------------
 
+# Initiate environment
+source build/envsetup.sh
 
 # CCache
 # ------
@@ -22,7 +24,6 @@ export WITH_SU=true
 export KBUILD_BUILD_USER=android
 export KBUILD_BUILD_HOST=localhost
 
-# Initiate env and start build
-source build/envsetup.sh
+# start build
 brunch gts210ltexx
 

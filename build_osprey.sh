@@ -5,6 +5,9 @@
 # and feel free to adapt to your own needs
 # ------------------------------------------
 
+# Initiate environment
+source build/envsetup.sh
+
 
 # CCache
 # ------
@@ -15,7 +18,7 @@ export USE_CCACHE=1
 prebuilts/misc/linux-x86/ccache/ccache -M 32G
 
 # Adjust TOOLCHAIN path for MSM8916
-export KERNEL_TOOLCHAIN=$PWD/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8/bin
+export KERNEL_TOOLCHAIN=$PWD/prebuilts/gcc/linux-x86/arm/linaro-arm-eabi-5.4/bin
 export KERNEL_TOOLCHAIN_PREFIX=arm-eabi-
 
 # comment below line, if you want to build 
@@ -26,7 +29,6 @@ export WITH_SU=true
 export KBUILD_BUILD_USER=android
 export KBUILD_BUILD_HOST=localhost
 
-# Initiate env and start build
-source build/envsetup.sh
+# start build
 brunch osprey
 

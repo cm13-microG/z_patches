@@ -12,7 +12,7 @@ cd $TOPDIR
 
 cd frameworks/base
 echo "Patching $PWD (microG Patch)"
-patch -p1 < $THISDIR/patch_004_microG-MM.patch
+patch -p1 < $THISDIR/patch_004_microG-MM-restricted.patch
 cd core/res/res/values
 rm *orig
 cd $TOPDIR

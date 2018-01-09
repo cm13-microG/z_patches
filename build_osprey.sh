@@ -26,7 +26,7 @@ export KERNEL_TOOLCHAIN_PREFIX=arm-eabi-
 # export WITH_SU=true
 
 # microG build
-export RELEASE_TYPE=microG
+export RELEASE_TYPE=UNOFFICIAL-microG
 
 # Normalize build metadata
 export KBUILD_BUILD_USER=android

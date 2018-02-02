@@ -35,18 +35,28 @@ echo "Patching $PWD (SET_TIME_ZONE)"
 echo ".  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . "
 patch -p1 < $THISDIR/patch_004_timezone-base.patch
 echo "--------------------------------------------------------"
+echo "Patching $PWD (Motion Sensors)"
+echo ".  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . "
+patch -p1 < $THISDIR/patch_005_motionsensor-base.patch
+echo "--------------------------------------------------------"
 cd core/res/res/values
 rm *orig
 cd $TOPDIR
 
-#cd frameworks/native
-#echo "--------------------------------------------------------"
-#echo "Patching $PWD (/proc hidepid=2)"
-#echo ".  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . "
-#patch -p1 < $THISDIR/patch_005_hidepid-native.patch
-#echo "--------------------------------------------------------"
-#cd $TOPDIR
+cd frameworks/native
+echo "--------------------------------------------------------"
+echo "Patching $PWD (Motion Sensors)"
+echo ".  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . "
+patch -p1 < $THISDIR/patch_005_motionsensor-native.patch
+echo "--------------------------------------------------------"
+cd $TOPDIR
 
+cd packages/apps/Settings
+echo "--------------------------------------------------------"
+echo "Patching $PWD (Motion Sensors)"
+echo ".  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  . "
+patch -p1 < $THISDIR/patch_005_motionsensor-Settings.patch
+echo "--------------------------------------------------------"
 cd $TOPDIR
 
 

@@ -1,28 +1,29 @@
 
 project frameworks/native/
 diff --git a/include/binder/AppOpsManager.h b/include/binder/AppOpsManager.h
-index 1d0e968c4..d87c47439 100644
+index 1d0e968c4..d34442eb4 100644
 --- a/include/binder/AppOpsManager.h
 +++ b/include/binder/AppOpsManager.h
-@@ -103,7 +103,8 @@ public:
+@@ -103,7 +103,9 @@ public:
          OP_BOOT_COMPLETED = 65,
          OP_NFC_CHANGE = 66,
          OP_DATA_CONNECT_CHANGE = 67,
 -        OP_SU = 68
-+        OP_SU = 68,
-+        OP_MOTION_SENSORS = 69,
++        OP_MOTION_SENSORS = 68,
++        OP_OTHER_SENSORS = 69,
++        OP_SU = 70
      };
  
      AppOpsManager();
 diff --git a/libs/gui/Sensor.cpp b/libs/gui/Sensor.cpp
-index e423a8ed3..1d93f94b1 100644
+index e423a8ed3..9b82577f3 100644
 --- a/libs/gui/Sensor.cpp
 +++ b/libs/gui/Sensor.cpp
 @@ -56,6 +56,7 @@ Sensor::Sensor(struct sensor_t const* hwSensor, int halVersion)
      mPower = hwSensor->power;
      mMinDelay = hwSensor->minDelay;
      mFlags = 0;
-+    mRequiredAppOp = AppOpsManager::OP_NONE;  // Initialize
++    mRequiredAppOp = AppOpsManager::OP_OTHER_SENSORS;  //default, other values are explicitly set
  
      // Set fifo event count zero for older devices which do not support batching. Fused
      // sensors also have their fifo counts set to zero.

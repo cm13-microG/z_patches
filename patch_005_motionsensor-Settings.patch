@@ -1,10 +1,18 @@
 
 project packages/apps/Settings/
 diff --git a/res/values-de/cm_strings.xml b/res/values-de/cm_strings.xml
-index 5c8ce640a7..f5a54771cc 100644
+index 5c8ce640a7..b42eae7910 100644
 --- a/res/values-de/cm_strings.xml
 +++ b/res/values-de/cm_strings.xml
-@@ -379,6 +379,7 @@
+@@ -308,6 +308,7 @@
+   <string name="app_ops_categories_media">Medien</string>
+   <string name="app_ops_categories_device">Gerät</string>
+   <string name="app_ops_categories_bootup">Systemstart</string>
++  <string name="app_ops_categories_sensors">Sensoren</string>
+   <string name="app_ops_categories_su">Root-Zugriff</string>
+   <!-- User display names for app ops codes - extension of AOSP -->
+   <string name="app_ops_summaries_coarse_location">Ungefährer Standort</string>
+@@ -379,6 +380,7 @@
    <string name="app_ops_summaries_toggle_nfc">NFC ein-/ausschalten</string>
    <string name="app_ops_summaries_toggle_mobile_data">Mobile Daten ein-/ausschalten</string>
    <string name="app_ops_summaries_superuser">Root-Zugriff</string>
@@ -12,7 +20,7 @@ index 5c8ce640a7..f5a54771cc 100644
    <!-- User display names for app ops codes - extension of AOSP -->
    <string name="app_ops_labels_coarse_location">Ungefährer Standort</string>
    <string name="app_ops_labels_fine_location">Genauer Standort</string>
-@@ -449,6 +450,7 @@
+@@ -449,6 +451,7 @@
    <string name="app_ops_labels_toggle_nfc">NFC ein-/ausschalten</string>
    <string name="app_ops_labels_toggle_mobile_data">Mobile Daten ein-/ausschalten</string>
    <string name="app_ops_labels_superuser">Root-Zugriff</string>
@@ -21,10 +29,18 @@ index 5c8ce640a7..f5a54771cc 100644
    <string name="app_ops_permissions_allowed">Erlaubt</string>
    <string name="app_ops_permissions_ignored">Verboten</string>
 diff --git a/res/values-fr/cm_strings.xml b/res/values-fr/cm_strings.xml
-index d1796c8823..772eb8d9f0 100644
+index d1796c8823..cd3c39feeb 100644
 --- a/res/values-fr/cm_strings.xml
 +++ b/res/values-fr/cm_strings.xml
-@@ -380,6 +380,7 @@ Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étapes de l\'a
+@@ -309,6 +309,7 @@ Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étapes de l\'a
+   <string name="app_ops_categories_media">Média</string>
+   <string name="app_ops_categories_device">Appareil</string>
+   <string name="app_ops_categories_bootup">Démarrage</string>
++  <string name="app_ops_categories_sensors">Capteurs</string>
+   <string name="app_ops_categories_su">Accès root</string>
+   <!-- User display names for app ops codes - extension of AOSP -->
+   <string name="app_ops_summaries_coarse_location">localisation approximative</string>
+@@ -380,6 +381,7 @@ Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étapes de l\'a
    <string name="app_ops_summaries_toggle_nfc">activer/désactiver le NFC</string>
    <string name="app_ops_summaries_toggle_mobile_data">activer/désactiver les données mobiles</string>
    <string name="app_ops_summaries_superuser">accès root</string>
@@ -32,7 +48,7 @@ index d1796c8823..772eb8d9f0 100644
    <!-- User display names for app ops codes - extension of AOSP -->
    <string name="app_ops_labels_coarse_location">Position approximative</string>
    <string name="app_ops_labels_fine_location">Position précise</string>
-@@ -450,6 +451,7 @@ Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étapes de l\'a
+@@ -450,6 +452,7 @@ Vous êtes maintenant à <xliff:g id="step_count">%1$d</xliff:g> étapes de l\'a
    <string name="app_ops_labels_toggle_nfc">Activer/désactiver le NFC</string>
    <string name="app_ops_labels_toggle_mobile_data">Activer/désactiver les données mobiles</string>
    <string name="app_ops_labels_superuser">Accès root</string>
@@ -41,10 +57,18 @@ index d1796c8823..772eb8d9f0 100644
    <string name="app_ops_permissions_allowed">Autorisé</string>
    <string name="app_ops_permissions_ignored">Ignoré</string>
 diff --git a/res/values/cm_arrays.xml b/res/values/cm_arrays.xml
-index 57375d9d79..cf2c166d45 100644
+index 57375d9d79..62ca989948 100644
 --- a/res/values/cm_arrays.xml
 +++ b/res/values/cm_arrays.xml
-@@ -256,6 +256,7 @@
+@@ -182,6 +182,7 @@
+         <item>@string/app_ops_categories_media</item>
+         <item>@string/app_ops_categories_device</item>
+         <item>@string/app_ops_categories_bootup</item>
++        <item>@string/app_ops_categories_sensors</item>
+         <item>@string/app_ops_categories_su</item>
+     </string-array>
+ 
+@@ -256,6 +257,7 @@
          <item>@string/app_ops_summaries_toggle_nfc</item>
          <item>@string/app_ops_summaries_toggle_mobile_data</item>
          <item>@string/app_ops_summaries_superuser</item>
@@ -52,7 +76,7 @@ index 57375d9d79..cf2c166d45 100644
      </string-array>
  
      <!-- User display names for app ops codes - extension of AOSP -->
-@@ -329,6 +330,7 @@
+@@ -329,6 +331,7 @@
          <item>@string/app_ops_labels_toggle_nfc</item>
          <item>@string/app_ops_labels_toggle_mobile_data</item>
          <item>@string/app_ops_labels_superuser</item>
@@ -61,10 +85,18 @@ index 57375d9d79..cf2c166d45 100644
  
      <!-- App ops permissions -->
 diff --git a/res/values/cm_strings.xml b/res/values/cm_strings.xml
-index f717cee0f9..a7a3d25e07 100644
+index f717cee0f9..bd02889d0b 100644
 --- a/res/values/cm_strings.xml
 +++ b/res/values/cm_strings.xml
-@@ -436,6 +436,8 @@
+@@ -364,6 +364,7 @@
+     <string name="app_ops_categories_media">Media</string>
+     <string name="app_ops_categories_device">Device</string>
+     <string name="app_ops_categories_bootup">Bootup</string>
++    <string name="app_ops_categories_sensors">Sensors</string>
+     <string name="app_ops_categories_su">Root access</string>
+ 
+     <!-- User display names for app ops codes - extension of AOSP -->
+@@ -436,6 +437,8 @@
      <string name="app_ops_summaries_toggle_nfc">toggle NFC</string>
      <string name="app_ops_summaries_toggle_mobile_data">toggle cellular data</string>
      <string name="app_ops_summaries_superuser">root access</string>
@@ -73,7 +105,7 @@ index f717cee0f9..a7a3d25e07 100644
  
      <!-- User display names for app ops codes - extension of AOSP -->
      <string name="app_ops_labels_coarse_location">Coarse location</string>
-@@ -507,6 +509,7 @@
+@@ -507,6 +510,7 @@
      <string name="app_ops_labels_toggle_nfc">Toggle NFC</string>
      <string name="app_ops_labels_toggle_mobile_data">Toggle cellular data</string>
      <string name="app_ops_labels_superuser">Root access</string>

@@ -18,6 +18,7 @@ cd ..
 TOPDIR=$PWD
 
 clear_set build
+clear_set external/svox
 clear_set frameworks/base
 
 cd $THISDIR

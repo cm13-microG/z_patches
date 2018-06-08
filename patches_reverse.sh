@@ -18,7 +18,6 @@ cd ..
 TOPDIR=$PWD
 
 clear_set build
-clear_set external/svox
 cd $THISDIR
 
 

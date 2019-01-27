@@ -17,4 +17,9 @@ cd core/res/res/values
 rm *orig
 cd $TOPDIR
 
+cd packages/apps/Settings
+echo "Patching $PWD (Patch level disclaimer)"
+patch -p1 < $THISDIR/patch_003_Settings.patch
+cd $TOPDIR
+
 cd $THISDIR

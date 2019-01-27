@@ -1,0 +1,102 @@
+From 2772e2192222569c83ea70a80ca4171320a2f4c0 Mon Sep 17 00:00:00 2001
+From: mse1969 <mse1969@posteo.de>
+Date: Mon, 24 Sep 2018 21:09:00 +0200
+Subject: [PATCH] Settings/DeviceInfo - Provide "patch level" explanation and
+ disclaimer
+
+Make it clear to the user, that this is an outdated, no longer
+supported Android version. And that we have only backported stuff
+from newer Android versions in the monthly Android security bulletins.
+
+Change-Id: I6d706dcb598dd836c6a6f0b499782be9bd59b4dc
+---
+ res/values-de/cm_strings.xml                     |  3 +++
+ res/values/cm_strings.xml                        |  4 ++++
+ res/xml/device_info_settings.xml                 |  2 +-
+ src/com/android/settings/DeviceInfoSettings.java | 11 ++++++++++-
+ 4 files changed, 18 insertions(+), 2 deletions(-)
+
+diff --git a/res/values-de/cm_strings.xml b/res/values-de/cm_strings.xml
+index 5c8ce640a7..bf9f70656a 100644
+--- a/res/values-de/cm_strings.xml
++++ b/res/values-de/cm_strings.xml
+@@ -1098,4 +1098,7 @@
+   <string name="security_settings_fingerprint_sensor_location_right">rechten Seite</string>
+   <!-- SIM status format string -->
+   <string name="sim_status_format_string">Anrufe: <xliff:g id="voice_state">%1$s</xliff:g> / Daten: <xliff:g id="data_state">%2$s</xliff:g></string>
++  <string name="security_patch_legacy">Inoffizielle Sicherheitsstufe</string>
++  <!-- "Legacy" Security Patch label -->
++  <string name="security_patch_legacy_info">Für diese Android-Version sind keine offiziellen Sicherheitsupdates mehr erhältlich.\nAlle enthaltenen Patches wurden aus neueren Versionen rückportiert.</string>
+ </resources>
+diff --git a/res/values/cm_strings.xml b/res/values/cm_strings.xml
+index f717cee0f9..f98f630874 100644
+--- a/res/values/cm_strings.xml
++++ b/res/values/cm_strings.xml
+@@ -1284,4 +1284,8 @@
+ 
+     <!-- SIM status format string -->
+     <string name="sim_status_format_string">Voice: <xliff:g id="voice_status">%1$s</xliff:g> / Data: <xliff:g id="data_status">%2$s</xliff:g></string>
++
++    <!-- "Legacy" Security Patch label -->
++    <string name="security_patch_legacy">Unofficial security backport</string>
++    <string name="security_patch_legacy_info">There are no official security patches for this Android version anymore. \nAll patches contained in this build are backports from newer versions.</string>
+ </resources>
+diff --git a/res/xml/device_info_settings.xml b/res/xml/device_info_settings.xml
+index 4e47b56275..c4fbfb2069 100644
+--- a/res/xml/device_info_settings.xml
++++ b/res/xml/device_info_settings.xml
+@@ -115,7 +115,7 @@
+         <!-- Security patch level -->
+         <Preference android:key="security_patch"
+                 style="?android:preferenceInformationStyle"
+-                android:title="@string/security_patch"
++                android:title="@string/security_patch_legacy"
+                 android:summary="@string/device_info_default"/>
+ 
+         <!-- Device FCC equipment id -->
+diff --git a/src/com/android/settings/DeviceInfoSettings.java b/src/com/android/settings/DeviceInfoSettings.java
+index 3eb2f9023b..ab344f370c 100644
+--- a/src/com/android/settings/DeviceInfoSettings.java
++++ b/src/com/android/settings/DeviceInfoSettings.java
+@@ -17,6 +17,7 @@
+ package com.android.settings;
+ 
+ import android.app.Activity;
++import android.app.AlertDialog;
+ import android.content.ClipData;
+ import android.content.ClipboardManager;
+ import android.content.Context;
+@@ -125,7 +126,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
+             try {
+                 SimpleDateFormat template = new SimpleDateFormat("yyyy-MM-dd");
+                 Date patchDate = template.parse(patch);
+-                String format = DateFormat.getBestDateTimePattern(Locale.getDefault(), "dMMMMyyyy");
++                String format = DateFormat.getBestDateTimePattern(Locale.getDefault(), "MMMMyyyy");
+                 patch = DateFormat.format(format, patchDate).toString();
+             } catch (ParseException e) {
+                 // broken parse; fall through and use the raw string
+@@ -151,6 +152,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
+         setExplicitValueSummary(KEY_MOD_API_LEVEL, constructApiLevelString());
+         findPreference(KEY_MOD_API_LEVEL).setEnabled(true);
+         findPreference(KEY_MOD_BUILD_DATE).setEnabled(true);
++        findPreference(KEY_SECURITY_PATCH).setEnabled(true);
+ 
+         if (!SELinux.isSELinuxEnabled()) {
+             String status = getResources().getString(R.string.selinux_status_disabled);
+@@ -369,6 +371,13 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
+             if (b.getBoolean(CarrierConfigManager.KEY_CI_ACTION_ON_SYS_UPDATE_BOOL)) {
+                 ciActionOnSysUpdate(b);
+             }
++        } else if (preference.getKey().equals(KEY_SECURITY_PATCH)) {
++            new AlertDialog.Builder(getActivity())
++                .setTitle(R.string.security_patch)
++                .setIcon(android.R.drawable.ic_dialog_alert)
++                .setMessage(R.string.security_patch_legacy_info)
++                .setNegativeButton(R.string.cancel, null)
++                .create().show();
+         }
+         return super.onPreferenceTreeClick(preferenceScreen, preference);
+     }
+-- 
+2.11.0
+

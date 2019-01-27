@@ -19,6 +19,7 @@ TOPDIR=$PWD
 
 clear_set build
 clear_set frameworks/base
+clear_set packages/apps/Settings
 
 cd $THISDIR
 

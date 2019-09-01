@@ -1,4 +1,4 @@
-From 2772e2192222569c83ea70a80ca4171320a2f4c0 Mon Sep 17 00:00:00 2001
+From fbcf9f4b59950881446d018e8735a93555b45117 Mon Sep 17 00:00:00 2001
 From: mse1969 <mse1969@posteo.de>
 Date: Mon, 24 Sep 2018 21:09:00 +0200
 Subject: [PATCH] Settings/DeviceInfo - Provide "patch level" explanation and
@@ -10,23 +10,22 @@ from newer Android versions in the monthly Android security bulletins.
 
 Change-Id: I6d706dcb598dd836c6a6f0b499782be9bd59b4dc
 ---
- res/values-de/cm_strings.xml                     |  3 +++
+ res/values-de/cm_strings.xml                     |  2 ++
  res/values/cm_strings.xml                        |  4 ++++
  res/xml/device_info_settings.xml                 |  2 +-
  src/com/android/settings/DeviceInfoSettings.java | 11 ++++++++++-
- 4 files changed, 18 insertions(+), 2 deletions(-)
+ 4 files changed, 17 insertions(+), 2 deletions(-)
 
 diff --git a/res/values-de/cm_strings.xml b/res/values-de/cm_strings.xml
-index 5c8ce640a7..bf9f70656a 100644
+index 72230e0aba..757d884026 100644
 --- a/res/values-de/cm_strings.xml
 +++ b/res/values-de/cm_strings.xml
-@@ -1098,4 +1098,7 @@
-   <string name="security_settings_fingerprint_sensor_location_right">rechten Seite</string>
-   <!-- SIM status format string -->
-   <string name="sim_status_format_string">Anrufe: <xliff:g id="voice_state">%1$s</xliff:g> / Daten: <xliff:g id="data_state">%2$s</xliff:g></string>
-+  <string name="security_patch_legacy">Inoffizielle Sicherheitsstufe</string>
-+  <!-- "Legacy" Security Patch label -->
-+  <string name="security_patch_legacy_info">Für diese Android-Version sind keine offiziellen Sicherheitsupdates mehr erhältlich.\nAlle enthaltenen Patches wurden aus neueren Versionen rückportiert.</string>
+@@ -916,4 +916,6 @@
+     <string name="security_settings_fingerprint_sensor_location_left">linken Seite</string>
+     <string name="security_settings_fingerprint_sensor_location_right">rechten Seite</string>
+     <string name="sim_status_format_string">Anrufe: <xliff:g id="voice_state">%1$s</xliff:g> / Daten: <xliff:g id="data_state">%2$s</xliff:g></string>
++    <string name="security_patch_legacy">Inoffizielle Sicherheitsstufe</string>
++    <string name="security_patch_legacy_info">Für diese Android-Version sind keine offiziellen Sicherheitsupdates mehr erhältlich.\nAlle enthaltenen Patches wurden aus neueren Versionen rückportiert.</string>
  </resources>
 diff --git a/res/values/cm_strings.xml b/res/values/cm_strings.xml
 index f717cee0f9..f98f630874 100644
